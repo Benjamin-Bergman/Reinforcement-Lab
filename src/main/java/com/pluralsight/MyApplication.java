@@ -20,7 +20,7 @@ public class MyApplication {
 
         printWelcomeMessage(name);
 
-        if (name.equals("Bob") && age >= 21)
+        if (name.equalsIgnoreCase("Bob") && age >= 21)
             System.out.println("You are old enough to drink.");
         else
             System.out.println("You are not old enough to drink.");
@@ -29,7 +29,7 @@ public class MyApplication {
 
         System.out.printf("Is %.2f greater than %.2f? %s%n", 3.14, 1.41, gt(3.14, 1.41) ? "Yes" : "No");
 
-        System.out.printf("%s, you are %swelcome here.%n", name, name.equals("Eve") ? "not " : "");
+        System.out.printf("%s, you are %swelcome here.%n", name, name.equalsIgnoreCase("Eve") ? "not " : "");
 
         System.out.printf("Your random number from 1 to 10 is %d.%n", randomBetween(1, 10));
 
@@ -58,9 +58,9 @@ public class MyApplication {
     }
 
     private static void printWelcomeMessage(String name) {
-        System.out.println(switch (name) {
-            case "Alice" -> "Welcome home, Alice.";
-            case "Bob" -> "Wanna grab a drink, Bob?";
+        System.out.println(switch (name.toLowerCase()) {
+            case "alice" -> "Welcome home, Alice.";
+            case "bob" -> "Wanna grab a drink, Bob?";
             default -> "Hello, user.";
         });
     }
