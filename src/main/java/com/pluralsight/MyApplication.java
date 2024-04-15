@@ -9,7 +9,7 @@ public class MyApplication {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String name = get("Enter your name: ", sc::nextLine);
+        String name = get("Enter your name: ", sc::nextLine).trim();
         int age = get("Enter your age: ", sc::nextInt);
 
         System.out.printf("Hello, %s! You are %d years old.%n", name, age);
