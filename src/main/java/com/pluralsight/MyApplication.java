@@ -3,15 +3,14 @@
 package com.pluralsight;
 
 import java.util.*;
+import java.util.function.*;
 
 public class MyApplication {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter your name: ");
-        String name = sc.nextLine();
-        System.out.print("Enter your age: ");
-        int age = sc.nextInt();
+        String name = get("Enter your name: ", sc::nextLine);
+        int age = get("Enter your age: ", sc::nextInt);
 
         System.out.printf("Hello, %s! You are %d years old.%n", name, age);
 
@@ -35,6 +34,11 @@ public class MyApplication {
         System.out.printf("Your random number from 1 to 10 is %d.%n", randomBetween(1, 10));
 
         System.out.printf("The smaller of %.2f and %.2f is %.2f%n", 12.34, 12.35, min(12.34, 12.35));
+    }
+
+    private static <T> T get(String message, Supplier<T> func) {
+        System.out.print(message);
+        return func.get();
     }
 
     private static int randomBetween(int lowerBound, int upperBound) {
